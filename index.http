@@ -1,0 +1,61 @@
+POST http://localhost:3010/login-super-admin
+Content-Type: application/json 
+
+{"email":"nanduaru333@gmail.com",
+ "password":"7328"
+}
+
+### 
+POST http://localhost:3010/create-agent
+Content-Type: application/json 
+
+{"email":"agent2@gmail.com",
+ "password":"4308",
+ "id":"2",
+ "limit":2
+}
+
+### 
+POST http://localhost:3010/login-agent
+Content-Type: application/json 
+
+{"email":"agent@gmail.com",
+ "password":"7328"
+}
+
+### 
+POST http://localhost:3010/book-ticket
+Content-Type: application/json 
+
+{"name":"bagya",
+ "age":50,
+ "seatNumber":2,
+ "id":"2",
+ "agentId":"2"
+}
+
+### 
+DELETE http://localhost:3010/delete-agent/2
+
+### 
+GET http://localhost:3010/get-all-booking
+
+### 
+GET http://localhost:3010/get-booking-agent/2
+
+
+### 
+POST http://localhost:3010/add-agent-details
+Content-Type: application/json 
+
+{
+"name":"manu",
+"dateOfBirth":"21-01-1998",
+"phonenumber":8971399165,
+"address":"Mysore",
+"profilePic":"http://pic.jpj",
+"id":"1"
+}
+
+### 
+GET http://localhost:3010/get-agent-details/1
