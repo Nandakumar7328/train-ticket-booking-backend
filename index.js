@@ -20,14 +20,16 @@ app.post('/login-super-admin',async(request,response) => {
     try{
         const supeUser = await SuperUser.find()
         let loginResult = false
+        let ID = null
         supeUser.map(eachData => {
             if (eachData.password === password && eachData.email === email){
-                 loginResult = true 
+                 loginResult = true
+                 ID = eachData.id
             }
         }) 
 
         if (loginResult === true){
-            response.send({status:true,msg:"login successfull"})
+            response.send({status:true,msg:"login successfull",ID:ID})
         }
         else{
             response.send({status:false,msg:"password or eamil wrong"})
@@ -69,14 +71,16 @@ app.post('/login-agent',async(request,response) => {
     try{
         const agent = await Agent.find()
         let loginResult = false
+        let ID = null
         agent.map(eachData => {
             if (eachData.password === password && eachData.email === email){
                  loginResult = true 
+                 ID = eachData.id
             }
         }) 
 
         if (loginResult === true){
-            response.send({status:true,msg:"login successfull"})
+            response.send({status:true,msg:"login successfull",ID:ID})
         }
         else{
             response.send({status:false,msg:"password or eamil wrong"})
