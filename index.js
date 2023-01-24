@@ -5,6 +5,8 @@ const SuperUser = require('./modelSuperUser')
 const Agent = require('./modelAgent')
 const Passenger = require('./modelTicket')
 const AgentDetails = require('./modelAgentDetails')
+const Row = require('./modelN')
+const { request, response } = require('express')
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -93,9 +95,9 @@ app.post('/login-agent',async(request,response) => {
 })
 
 app.post('/book-ticket',async(request,response) => {
-    const {name,age,seatNumber,id,agentId} = request.body
+    const {name,age,seatNumber,id,agentId,gender} = request.body
     try{
-       const book = new Passenger({name,age,seatNumber,id,agentId})
+       const book = new Passenger({name,age,seatNumber,id,agentId,gender})
        await book.save()
        response.send({status:true,msg:"Booking success"})
     }
@@ -156,6 +158,36 @@ app.get('/get-agent-details/:id',async (request,response) => {
     try{
         const agentpersonelDetails = await AgentDetails.find({id:id})
         response.send(agentpersonelDetails)
+    }
+    catch(err){
+        console.log(err.message)
+    }
+})
+
+app.put('/add-row',async(request,response) =>{
+    const {numberOfRow} = request.body
+ try{
+
+     await Row.updateOne({numberOfRow:numberOfRow})
+    response.send({status:true,msg:"row Add Success"})
+
+ }
+ catch(err){
+     console.log(err.message)
+ }
+})
+
+app.get('/get-row',async(request,response) => {
+    try{
+       const getRow = await Row.find()
+       let rowNum = null
+       getRow.map(eachRow => {
+        if (eachRow.numberOfRow){
+           rowNum = eachRow.numberOfRow
+        }
+
+       })
+       response.send({status:true,rownum:rowNum})
     }
     catch(err){
         console.log(err.message)

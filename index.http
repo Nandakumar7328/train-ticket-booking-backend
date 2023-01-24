@@ -31,7 +31,8 @@ Content-Type: application/json
  "age":50,
  "seatNumber":2,
  "id":"2",
- "agentId":"2"
+ "agentId":"2",
+ "gender":"female"
 }
 
 ### 
@@ -59,3 +60,12 @@ Content-Type: application/json
 
 ### 
 GET http://localhost:3010/get-agent-details/1
+
+### 
+PUT http://localhost:3010/add-row 
+Content-Type: application/json
+
+{"numberOfRow":5}
+
+### 
+GET http://localhost:3010/get-row
