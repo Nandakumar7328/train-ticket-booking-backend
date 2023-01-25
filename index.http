@@ -27,12 +27,12 @@ Content-Type: application/json
 POST http://localhost:3010/book-ticket
 Content-Type: application/json 
 
-{"name":"bagya",
- "age":50,
- "seatNumber":2,
- "id":"2",
- "agentId":"2",
- "gender":"female"
+{"name":"manu",
+ "age":70,
+ "seatNumber":7,
+ "id":"3",
+ "agentId":"1",
+ "gender":"MALE"
 }
 
 ### 
@@ -69,3 +69,6 @@ Content-Type: application/json
 
 ### 
 GET http://localhost:3010/get-row
+
+### 
+GET http://localhost:3010/get-admin-details

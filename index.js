@@ -43,6 +43,17 @@ app.post('/login-super-admin',async(request,response) => {
     }
 })
 
+app.get('/get-admin-details',async(request,response) => {
+    try{
+        const getSuperAdmin = await SuperUser.find()
+        response.send(getSuperAdmin)
+    }
+    catch(err){
+         console.log(err.message)
+    }
+})
+
+
 app.post('/create-agent',async(request,response) => {
     const {id,email,password,limit} = request.body 
     try{
