@@ -85,15 +85,17 @@ app.post('/login-agent',async(request,response) => {
         const agent = await Agent.find()
         let loginResult = false
         let ID = null
+        let limit = null 
         agent.map(eachData => {
             if (eachData.password === password && eachData.email === email){
                  loginResult = true 
                  ID = eachData.id
+                 limit = eachData.limit
             }
         }) 
 
         if (loginResult === true){
-            response.send({status:true,msg:"login successfull",ID:ID})
+            response.send({status:true,msg:"login successfull",ID:ID,limit:limit})
         }
         else{
             response.send({status:false,msg:"password or eamil wrong"})
